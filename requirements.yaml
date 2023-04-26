@@ -1,0 +1,28 @@
+name: lepinoc-detection
+channels:
+  - anaconda
+  - conda-forge
+  - default
+  - pytorch
+dependencies:
+  # base ----------------------------------------
+  - python=3.7.6
+  - matplotlib
+  - numpy
+  - opencv
+  - Pillow>=8.0.0
+  - PyYAML>=5.3.1
+  - scipy
+  - pytorch
+  - torchvision
+  - tqdm
+  - pip
+  - pip:
+    - supervisely
+    - onnxruntime
+    - thop  # FLOPs computation
+  # logging -------------------------------------
+  - tensorboard
+  # plotting ------------------------------------
+  - seaborn
+  - pandas

@@ -1,0 +1,8 @@
+notes-ideas.md
+utils/*/__pycache__/
+utils/*/*/__pycache__/
+prediction_results/
+utils/__pycache__/
+models/__pycache__/
+.DS_Store
+.idea
