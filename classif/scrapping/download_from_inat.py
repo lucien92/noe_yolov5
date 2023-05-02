@@ -31,6 +31,7 @@ def download_from_csv(path_to_csv , taxon_name ,images_folder):
 
 	# Create the folder if it does not exist
 	if not os.path.exists(images_folder):
+		print(images_folder)
 		os.mkdir(images_folder)
 
 
@@ -48,7 +49,7 @@ def download_from_csv(path_to_csv , taxon_name ,images_folder):
 				if not os.path.exists(os.path.join(images_folder, taxon_name)):
 					os.mkdir(os.path.join(images_folder, taxon_name))
 					
-				image_url = f"https://inaturalist-open-data.s3.amazonaws.com/photos/{photo_id}/medium.{extension}"
+				image_url = f"https://inaturalist-open-data.s3.amazonaws.com/photos/{photo_id}/medium.{extension}" #sert à télécharger les photos. Avant le sql permettait juste de transformer les noms latin du csv en id de l'url d'inat
 				image_name = photo_id + '.' + extension
 				target_dest = os.path.join(images_folder, taxon_name, image_name)
 				get_image(image_url, target_dest)

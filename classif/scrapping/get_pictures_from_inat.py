@@ -12,7 +12,7 @@ from download_from_inat import download_from_csv
 ## stored in the df_taxa_in_bdd variable
 
 # path to the csv file with all the taxon name 
-csv_path = '/home/basile/Documents/projet_bees_detection_basile/classification/data/hierarchy.csv'
+csv_path = '/home/lucien/projet_lepinoc/lepinoc-detection/classif/scrapping/especes.csv'
 # Load the csv file with all the taxon name
 df_taxa_in_bdd = pd.read_csv(csv_path, sep=',')
 # Get the taxon names as an iterable
@@ -20,10 +20,14 @@ df_taxa_in_bdd = df_taxa_in_bdd['LB_NOM']
 
 
 # path to the sqlite database
-sqlite_path = '/home/basile/Documents/projet_bees_detection_basile/data_bees_detection/inat_12_04/inat.db'
+sqlite_path = '/home/lucien/projet_lepinoc/lepinoc-detection/classif/scrapping/inat.db'
 
 # path to the folder where the csv and the images will be saved
-output_folder = '/home/basile/Documents/projet_bees_detection_basile/data_bees_detection/inat_12_04'
+output_folder = '/media/lucien/My Passport/scrapp_inat_lepido'
+try:
+    os.mkdir("/home/lucien/projet_lepinoc/data/inat")
+except:
+    pass
 
 ########## UTILS ##########
 
@@ -34,7 +38,7 @@ def name_to_taxon_id(taxon_name,c):
 
     # Fetch the results
     result = c.fetchone()
-
+    print("look at the result : ", result)
 
     return result[0]
 
@@ -45,16 +49,15 @@ def info_from_taxon_id(taxon_id,c):
     as a dataframe
     """
 
-    # Execute the query
-    c.execute("SELECT taxon_id, photo_id, extension, photos.observation_uuid FROM observations INNER JOIN photos on photos.observation_uuid = observations.observation_uuid where taxon_id = ? LIMIT 2", (taxon_id,))
+    # Execute the query pour récupérer les taxon (id dans l'url) qui  nous inétresse
+    print(f"on récupère les info du taxon {taxon_id}")
+    c.execute("SELECT taxon_id, photo_id, extension, photos.observation_uuid FROM observations INNER JOIN photos on photos.observation_uuid = observations.observation_uuid where taxon_id = ? AND quality_grade = 'research' LIMIT 200", (taxon_id,))
 
     # Fetch the results
-    # result = c.fetchone()
+    #result = c.fetchone()
     result = c.fetchall()
-
     # Create a dataframe with the result
     df = pd.DataFrame(result, columns=['taxon_id', 'photo_id', 'extension', 'observation_uuid'])
-
     return df
 
 
@@ -97,10 +100,8 @@ def main():
 
         # Get the info from the taxon id
         df_info_taxon = info_from_taxon_id(taxon_id,c)
-
         # Save the infos in a csv file
         df_info_taxon.to_csv(path_to_csv_files + '/' + taxon_name + '.csv', index=False)
-
         # Download the images
         download_from_csv(path_to_csv_files + '/' + taxon_name + '.csv',taxon_name,images_folder=path_to_img_files)
 

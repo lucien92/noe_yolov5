@@ -85,10 +85,10 @@ for specie in links:
             i += 1
             
             url = specie[0] + str(i) + '&subview=table' #on fait comme si on avait cliqué sur l'image (qui est une imagette) pour atteindre la page de la photo, qui est en fait le même ilen avec un numéro derrière
-            
+            print(url)
             driver.get(url)
 
-            time.sleep(3)
+            time.sleep(3)   
 
             SCROLL_PAUSE_TIME = 2
 
