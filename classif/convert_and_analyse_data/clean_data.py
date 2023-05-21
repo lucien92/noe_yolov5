@@ -49,3 +49,5 @@ for folder in os.listdir(path):
     if folder in list(df["Espece"]):
         #on copie le dossier et on l'enregiste dans le dossier cleaned_data/folder
         os.system('cp -r "' + path + '/' + folder + '" "/home/lucien/projet_lepinoc/data/cleaned_data_above30"')
+
+

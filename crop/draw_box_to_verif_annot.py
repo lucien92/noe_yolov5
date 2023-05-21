@@ -3,7 +3,7 @@ import cv2
 import pandas as pd
 
 
-path_to_csv = '/home/lucien/projet_lepinoc/script_lepinoc/script/lepidoptere_detection/src/data/inputs/all_annotations.csv'
+path_to_csv = '/content/noe_yolov5/script/lepidoptere_detection/src/data/inputs/all_annotations.csv'
 
 
 def convert_bbox_to_absolute(xmin,ymin,xmax,ymax,width,height):

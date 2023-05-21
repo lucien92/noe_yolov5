@@ -2,12 +2,12 @@ import splitfolders
 import os
 
 try:
-    os.mkdir("/home/lucien/projet_lepinoc/data/sets_above30")
+    os.mkdir("/content/drive/MyDrive/sets_above30/")
 except:
     pass
 # Split with a ratio.
 # To only split into training and validation set, set a tuple to `ratio`, i.e, `(.8, .2)`.
-splitfolders.ratio("/home/lucien/projet_lepinoc/data/cleaned_data_above30", output="/home/lucien/projet_lepinoc/data/",
+splitfolders.ratio("/home/lucien/projet_lepinoc/data/final_cleaned_data", output="/home/lucien/projet_lepinoc/data/",
     seed=1337, ratio=(.8, .1, .1), group_prefix=None, move=False) # default values
 
 # Split val/test with a fixed number of items, e.g. `(100, 100)`, for each set.
