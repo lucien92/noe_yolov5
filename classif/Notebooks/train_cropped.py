@@ -13,7 +13,7 @@ from tensorflow.keras.preprocessing import image_dataset_from_directory
 #!git clone https://github.com/fabiopereira59/abeilles-cap500
 IMG_SIZE = 224
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
-    directory='/home/lucien/projet_lepinoc/data/train',
+    directory='/home/lucien/projet_lepinoc/data/best71_sets/train',
     labels='inferred',
     label_mode='categorical',
     shuffle = False,
@@ -34,7 +34,7 @@ IMG_SIZE = 224 # pour utiliser ResNet
 # Shuffle à false pour avoir accès aux images depuis
 # leur chemin d'accès avec train_ds.file_paths
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
-    directory='/home/lucien/projet_lepinoc/data/train/',
+    directory='/home/lucien/projet_lepinoc/data/best71_sets/train/',
     labels='inferred',
     label_mode='categorical',
     shuffle = False,
@@ -42,7 +42,7 @@ train_ds = tf.keras.preprocessing.image_dataset_from_directory(
     image_size=(IMG_SIZE, IMG_SIZE))
 
 validation_ds = tf.keras.preprocessing.image_dataset_from_directory(
-    directory='/home/lucien/projet_lepinoc/data/val/',
+    directory='/home/lucien/projet_lepinoc/data/best71_sets/val/',
     labels='inferred',
     label_mode='categorical',
     batch_size=8,
@@ -274,11 +274,12 @@ def Hierarchicaloss(species_to_genus, genus_to_subfamily, subfamily_to_family, b
    
     # Return a function
     return HIERARCHICAL_loss
-loss=[Hierarchicaloss(species_to_genus, genus_to_subfamily, subfamily_to_family,8, alpha=0.5)]
+#loss=[Hierarchicaloss(species_to_genus, genus_to_subfamily, subfamily_to_family,8, alpha=0.5)]
+loss = 'categorical_crossentropy'
 ## Entraînement du modèle
 # Ajout de l'optimiseur, de la fonction coût et des métriques
 lr = 1e-3
-model.compile(optimizers.SGD(learning_rate=lr, momentum=0.9), loss=loss, metrics=['categorical_accuracy', tf.keras.metrics.Precision(), tf.keras.metrics.Recall()])
+model.compile(tf.keras.optimizers.Adam(learning_rate=lr), loss=loss, metrics=['categorical_accuracy', tf.keras.metrics.Precision(), tf.keras.metrics.Recall()])
 # Les callbacks, là où on sauvegarde les poids du réseau
 
 #filepath = path to save the model at the end of each epoch
