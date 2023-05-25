@@ -279,7 +279,7 @@ def summarize_predictions(results_dir: str, names):
 def parse_opt(): #tous les arguments à rentrer
     print("parsing arguments for Lepinoc detection")
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', nargs='+', type=str, default='/home/lucien/projet_lepinoc/lepinoc-detection/models/lepidoptera.pt', help='model.pt path(s)')
+    parser.add_argument('--weights', nargs='+', type=str, default='/Workspace/Repos/b00786574@essec.edu/noe_yolov5//models/lepidoptera.pt', help='model.pt path(s)')
     parser.add_argument('--source', type=str, default='/home/lucien/projet_lepinoc/data/test_detect', help='file/dir/URL/glob, 0 for webcam')
     parser.add_argument('--img_size', '--img', '--img-size', nargs='+', type=int, default=[640],
                         help='inference size h,w')

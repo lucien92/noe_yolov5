@@ -6,18 +6,18 @@ https://github.com/inaturalist/inaturalist-open-data/tree/documentation
 pip3 install --upgrade awscli
 
 - Télécharger les photos
-aws s3 cp --no-sign-request s3://inaturalist-open-data/photos.csv.gz /home/lucien/projet_lepinoc/lepinoc-detection/classif/scrapping/photos.csv
+aws s3 cp --no-sign-request s3://inaturalist-open-data/photos.csv.gz /Workspace/Repos/b00786574@essec.edu/noe_yolov5/classif/scrapping/photos.csv
 
 - Télécharger les observations 
-aws s3 cp --no-sign-request s3://inaturalist-open-data/observations.csv.gz /home/lucien/projet_lepinoc/lepinoc-detection/classif/scrapping/observations.csv
+aws s3 cp --no-sign-request s3://inaturalist-open-data/observations.csv.gz /Workspace/Repos/b00786574@essec.edu/noe_yolov5/classif/scrapping/observations.csv
 
 Garder les quality_grade = research
 
 - Télécharger les taxons 
-aws s3 cp --no-sign-request s3://inaturalist-open-data/taxa.csv.gz /home/lucien/projet_lepinoc/lepinoc-detection/classif/scrapping/taxa.csv
+aws s3 cp --no-sign-request s3://inaturalist-open-data/taxa.csv.gz /Workspace/Repos/b00786574@essec.edu/noe_yolov5/classif/scrapping/taxa.csv
     
 Les trois d'un coup vers des csv extrait:
-aws s3 cp --no-sign-request s3://inaturalist-open-data/photos.csv.gz /home/lucien/projet_lepinoc/lepinoc-detection/classif/scrapping/photos.csv; aws s3 cp --no-sign-request s3://inaturalist-open-data/observations.csv.gz /home/lucien/projet_lepinoc/lepinoc-detection/classif/scrapping/observations.csv; aws s3 cp --no-sign-request s3://inaturalist-open-data/taxa.csv.gz /home/lucien/projet_lepinoc/lepinoc-detection/classif/scrapping/taxa.csv
+aws s3 cp --no-sign-request s3://inaturalist-open-data/photos.csv.gz /Workspace/Repos/b00786574@essec.edu/noe_yolov5/classif/scrapping/photos.csv; aws s3 cp --no-sign-request s3://inaturalist-open-data/observations.csv.gz /Workspace/Repos/b00786574@essec.edu/noe_yolov5/classif/scrapping/observations.csv; aws s3 cp --no-sign-request s3://inaturalist-open-data/taxa.csv.gz /Workspace/Repos/b00786574@essec.edu/noe_yolov5/classif/scrapping/taxa.csv
 
 ou
 
@@ -37,7 +37,7 @@ exemple: toujours commencer par ouvrir une session en rentrant sqlite3 nom_de_la
 sudo apt-get install sqlite3
 
 - Création d'une nouvelle base de données ou seulement connexion : 
-sqlite3 /home/lucien/projet_lepinoc/lepinoc-detection/classif/scrapping/inat.db
+sqlite3 /Workspace/Repos/b00786574@essec.edu/noe_yolov5/classif/scrapping/inat.db
 
 - Création des tables : 
 CREATE TABLE observations (
@@ -85,14 +85,14 @@ CREATE TABLE observers (
 
 - Mettre en place une importation de csv avec colonnes séparées par des tabulations
 .mode tabs
-.import /home/lucien/projet_lepinoc/lepinoc-detection/taxa.csv taxa 
+.import /Workspace/Repos/b00786574@essec.edu/noe_yolov5//taxa.csv taxa 
 
 - Vérifier le bon import des données
 select * from taxa limit 10;
 .
 Importer les autres tables : 
-.import /home/lucien/projet_lepinoc/lepinoc-detection/observations.csv observations
-.import /home/lucien/projet_lepinoc/lepinoc-detection/photos.csv photos
+.import /Workspace/Repos/b00786574@essec.edu/noe_yolov5//observations.csv observations
+.import /Workspace/Repos/b00786574@essec.edu/noe_yolov5//photos.csv photos
 
 Création d'indexes pour accélérer les requêtes 
 CREATE UNIQUE INDEX "idx_observations_observation_uuid" ON "observations" ("observation_uuid");

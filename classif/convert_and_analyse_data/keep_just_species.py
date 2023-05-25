@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-path_to_hierarchy = "/home/lucien/projet_lepinoc/lepinoc-detection/classif/convert_and_analyse_data/Liste_especes_IA_Lepi_noc_.csv"
+path_to_hierarchy = "/Workspace/Repos/b00786574@essec.edu/noe_yolov5/classif/convert_and_analyse_data/Liste_especes_IA_Lepi_noc_.csv"
 path_to_data = "/home/lucien/projet_lepinoc/data/cleaned_data_above30"
 try:
     os.mkdir("/home/lucien/projet_lepinoc/data/final_cleaned_data")
