@@ -15,7 +15,7 @@ error = []
 with open('/Workspace/Repos/b00786574@essec.edu/noe_yolov5/classif/convert_and_analyse_data/especes.csv', 'w') as f:
     f.write('Especes,0\n')
     for item in L:
-        path_to_specie = f'/home/lucien/projet_lepinoc/data/Pictures_melange/{item}'
+        path_to_specie = f'dbfs:/FileStore/tables/data_lepinoc/Pictures_melange/{item}'
         try:
             nb = len(os.listdir(path_to_specie))
             f.write(f'{item},{nb}' + '\n')

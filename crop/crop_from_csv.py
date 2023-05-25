@@ -4,7 +4,7 @@ import csv
 import os
 
 def cropp():
-    path_to_data = "/home/lucien/projet_lepinoc/data/test_detect"
+    path_to_data = "dbfs:/FileStore/tables/data_lepinoc/test_detect"
     path_to_csv = "/Workspace/Repos/b00786574@essec.edu/noe_yolov5//prediction_results/exp/labels/xyxy"
     output_path = "/Workspace/Repos/b00786574@essec.edu/noe_yolov5//crop/Cropped_Anthophila"
 

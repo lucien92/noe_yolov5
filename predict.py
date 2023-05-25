@@ -280,7 +280,7 @@ def parse_opt(): #tous les arguments à rentrer
     print("parsing arguments for Lepinoc detection")
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', nargs='+', type=str, default='/Workspace/Repos/b00786574@essec.edu/noe_yolov5//models/lepidoptera.pt', help='model.pt path(s)')
-    parser.add_argument('--source', type=str, default='/home/lucien/projet_lepinoc/data/test_detect', help='file/dir/URL/glob, 0 for webcam')
+    parser.add_argument('--source', type=str, default='dbfs:/FileStore/tables/data_lepinoc/test_detect', help='file/dir/URL/glob, 0 for webcam')
     parser.add_argument('--img_size', '--img', '--img-size', nargs='+', type=int, default=[640],
                         help='inference size h,w')
     parser.add_argument('--conf-thres', type=float, default=0.25, help='confidence threshold, default 0.25')

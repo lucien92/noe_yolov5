@@ -1,7 +1,7 @@
 import os
 import pandas
 
-path_to_data = "/home/lucien/projet_lepinoc/data/crop"
+path_to_data = "dbfs:/FileStore/tables/data_lepinoc/crop"
 
 count = {}
 for folder in os.listdir(path_to_data):

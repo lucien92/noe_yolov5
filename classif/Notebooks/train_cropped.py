@@ -13,7 +13,7 @@ from tensorflow.keras.preprocessing import image_dataset_from_directory
 #!git clone https://github.com/fabiopereira59/abeilles-cap500
 IMG_SIZE = 224
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
-    directory='/home/lucien/projet_lepinoc/data/best71_sets/train',
+    directory='dbfs:/FileStore/tables/data_lepinoc/best71_sets/train',
     labels='inferred',
     label_mode='categorical',
     shuffle = False,
@@ -34,7 +34,7 @@ IMG_SIZE = 224 # pour utiliser ResNet
 # Shuffle à false pour avoir accès aux images depuis
 # leur chemin d'accès avec train_ds.file_paths
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
-    directory='/home/lucien/projet_lepinoc/data/best71_sets/train/',
+    directory='dbfs:/FileStore/tables/data_lepinoc/best71_sets/train/',
     labels='inferred',
     label_mode='categorical',
     shuffle = False,
@@ -42,7 +42,7 @@ train_ds = tf.keras.preprocessing.image_dataset_from_directory(
     image_size=(IMG_SIZE, IMG_SIZE))
 
 validation_ds = tf.keras.preprocessing.image_dataset_from_directory(
-    directory='/home/lucien/projet_lepinoc/data/best71_sets/val/',
+    directory='dbfs:/FileStore/tables/data_lepinoc/best71_sets/val/',
     labels='inferred',
     label_mode='categorical',
     batch_size=8,

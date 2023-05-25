@@ -25,7 +25,7 @@ sqlite_path = '/Workspace/Repos/b00786574@essec.edu/noe_yolov5/classif/scrapping
 # path to the folder where the csv and the images will be saved
 output_folder = '/media/lucien/My Passport/scrapp_inat_lepido'
 try:
-    os.mkdir("/home/lucien/projet_lepinoc/data/inat")
+    os.mkdir("dbfs:/FileStore/tables/data_lepinoc/inat")
 except:
     pass
 

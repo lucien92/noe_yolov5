@@ -3,7 +3,7 @@ import cv2
 
 #On souhaite récupérer tous les crop des images annotées et enregistré chacun des crop dans un dossier portant le nom du label
 
-path_to_images = "/home/lucien/projet_lepinoc/data/data"
+path_to_images = "dbfs:/FileStore/tables/data_lepinoc/data"
 
 def convert_bbox_format_reverse(bbox):
             # bbox est une liste ou un tuple de la forme [x_center, y_center, width, height]
@@ -23,7 +23,7 @@ def convert_relativ_to_absolute(bbox, img_width, img_height):
             return bbox
 
 try:
-    os.mkdir("/home/lucien/projet_lepinoc/data/crop/")
+    os.mkdir("dbfs:/FileStore/tables/data_lepinoc/crop/")
 except:
     pass
 
@@ -50,8 +50,8 @@ for folder in os.listdir(path_to_images):
                 ymax = bbox[3]
                 crop = img[ymin:ymax, xmin:xmax]
                 try:
-                    os.mkdir(f'/home/lucien/projet_lepinoc/data/crop/{label}') #attention il faut changer les labels à chaque folder car le 1 du dossier 1 n'est pas celui du dossier 4 (pour les 4 grands dossier d'annotations)
+                    os.mkdir(f'dbfs:/FileStore/tables/data_lepinoc/crop/{label}') #attention il faut changer les labels à chaque folder car le 1 du dossier 1 n'est pas celui du dossier 4 (pour les 4 grands dossier d'annotations)
                 except:
                     pass
-                cv2.imwrite(f'/home/lucien/projet_lepinoc/data/crop/{label}/{annot[:-4]}_{label}.jpg', crop)
-                print(f'crop saved to /home/lucien/projet_lepinoc/data/crop/{label}/{annot[:-4]}_{label}.jpg')
+                cv2.imwrite(f'dbfs:/FileStore/tables/data_lepinoc/crop/{label}/{annot[:-4]}_{label}.jpg', crop)
+                print(f'crop saved to dbfs:/FileStore/tables/data_lepinoc/crop/{label}/{annot[:-4]}_{label}.jpg')

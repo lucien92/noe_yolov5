@@ -2,16 +2,16 @@ import os
 
 import pandas as pd
 
-path = "/home/lucien/projet_lepinoc/data/Pictures_melange"
+path = "dbfs:/FileStore/tables/data_lepinoc/Pictures_melange"
 # try:
-#     os.mkdir("/home/lucien/projet_lepinoc/data/cleaned_data")
+#     os.mkdir("dbfs:/FileStore/tables/data_lepinoc/cleaned_data")
 # except:
 #     pass
 
 # for folder in os.listdir(path):
 #     if len(os.listdir(path + "/" + folder)) > 30:
 #         #on copie le dossier et on l'enregiste dans le dossier cleaned_data/folder
-#         os.system('cp -r "' + path + '/' + folder + '" "/home/lucien/projet_lepinoc/data/cleaned_data"')
+#         os.system('cp -r "' + path + '/' + folder + '" "dbfs:/FileStore/tables/data_lepinoc/cleaned_data"')
 
 #maintenant ojn veut changer le csv /Workspace/Repos/b00786574@essec.edu/noe_yolov5/classif/convert_and_analyse_data/Liste_especes_IA_Lepi_noc_.csv et le csv 
 #/Workspace/Repos/b00786574@essec.edu/noe_yolov5/classif/convert_and_analyse_data/especes.csv pour qu'ils ne contiennent plsu que les noms des folder encore présents
@@ -20,7 +20,7 @@ path = "/home/lucien/projet_lepinoc/data/Pictures_melange"
 
 
 df = pd.read_csv("/Workspace/Repos/b00786574@essec.edu/noe_yolov5/classif/convert_and_analyse_data/Liste_especes_IA_Lepi_noc_.csv", delimiter = ";")
-liste_especes = list(os.listdir("/home/lucien/projet_lepinoc/data/cleaned_data"))
+liste_especes = list(os.listdir("dbfs:/FileStore/tables/data_lepinoc/cleaned_data"))
 
 
 suppr = []
@@ -39,15 +39,15 @@ df.to_csv("/Workspace/Repos/b00786574@essec.edu/noe_yolov5/classif/convert_and_a
 
 
 #On veut créer un nouveau dossier avec les images de ces espèces à partir du dossier Pictures_melange
-path = "/home/lucien/projet_lepinoc/data/cleaned_data"
+path = "dbfs:/FileStore/tables/data_lepinoc/cleaned_data"
 try:
-    os.mkdir("/home/lucien/projet_lepinoc/data/cleaned_data_above30")
+    os.mkdir("dbfs:/FileStore/tables/data_lepinoc/cleaned_data_above30")
 except:
     pass
 
 for folder in os.listdir(path):
     if folder in list(df["Espece"]):
         #on copie le dossier et on l'enregiste dans le dossier cleaned_data/folder
-        os.system('cp -r "' + path + '/' + folder + '" "/home/lucien/projet_lepinoc/data/cleaned_data_above30"')
+        os.system('cp -r "' + path + '/' + folder + '" "dbfs:/FileStore/tables/data_lepinoc/cleaned_data_above30"')
 
 
